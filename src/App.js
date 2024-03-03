@@ -1,23 +1,29 @@
-import logo from './logo.svg';
 import './App.css';
+import {useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { deleteDataApi, myAsyncFunc, updateDataApi } from './actions';
 
 function App() {
+  const dispatch = useDispatch();
+  const stateData = useSelector((state) => state.getDataReducer);
+
+  useEffect(() => {
+    dispatch(myAsyncFunc())
+  }, [])
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Data</h1>
+      {stateData.map(({ id, title }) => {
+        return (
+          <>
+            <p>{id}</p>
+            <p>{title}</p>
+            <button onClick={()=>dispatch(updateDataApi(id))}>edit</button>
+            <button onClick={()=>dispatch(deleteDataApi(id))}>delete</button>
+          </>
+        )
+      })}
     </div>
   );
 }
