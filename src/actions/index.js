@@ -28,12 +28,12 @@ export const updateData = (data) => {
 }
 
 
-export const deleteData = (data) => {
+export const deleteData = (data,id) => {
     console.log(data,'<==after deleting data');
     return (
         {
             type: DELETEDATA,
-            payload: data
+            payload: {data,id}
         }
     )
 }
@@ -70,6 +70,6 @@ export const deleteDataApi = (id) => {
         })
         const data =await res.json();
         console.log(data,'<====after delete');
-        dispatch(deleteData(data))
+        dispatch(deleteData(data,id))
     }
 }

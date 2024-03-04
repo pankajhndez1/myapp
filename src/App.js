@@ -1,29 +1,28 @@
+import { Routes, Route } from 'react-router-dom';
 import './App.css';
-import {useDispatch, useSelector } from 'react-redux';
-import { useEffect } from 'react';
-import { deleteDataApi, myAsyncFunc, updateDataApi } from './actions';
+import RandomData from './RandomData';
+import Home from './pages/Home';
+import Navbar from './components/Navbar';
+import Contact from './pages/Contact';
+import ErrorPage from './pages/ErrorPage';
+import Post from './pages/Post';
+import DynamicPostPage from './pages/DynamicPostPage';
+
+
 
 function App() {
-  const dispatch = useDispatch();
-  const stateData = useSelector((state) => state.getDataReducer);
-
-  useEffect(() => {
-    dispatch(myAsyncFunc())
-  }, [])
-
   return (
     <div className="App">
-      <h1>Data</h1>
-      {stateData.map(({ id, title }) => {
-        return (
-          <>
-            <p>{id}</p>
-            <p>{title}</p>
-            <button onClick={()=>dispatch(updateDataApi(id))}>edit</button>
-            <button onClick={()=>dispatch(deleteDataApi(id))}>delete</button>
-          </>
-        )
-      })}
+      <Navbar/>
+      <Routes>
+        <Route path="/" element={<Home/> } />
+        <Route path="/show-the-api-data" element={<RandomData/> } />
+        <Route path="/contact" element={<Contact/> } />
+        <Route path="*" element={<ErrorPage/> } />
+        <Route path="/post" element={<Post/>}/>
+        <Route path="/post/:category" element={<DynamicPostPage/>}/>
+
+      </Routes>
     </div>
   );
 }

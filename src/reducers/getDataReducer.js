@@ -16,8 +16,10 @@ const getDataReducer = (state = initialState, action) => {
             return [...state];
 
         case DELETEDATA:
-            let deletedNewObj = action.payload;
-            console.log(deletedNewObj,'<---deletedNewObj');
+            let deletedNewObj = action.payload.data;
+            console.log(action.payload.id,'<---deletedNewObj');
+            const newData=state.filter((ele)=>ele.id!==action.payload.id)
+            return [...newData]
         
         default:
             return state
