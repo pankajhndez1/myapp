@@ -2,6 +2,7 @@ import React from 'react'
 import { NavLink } from 'react-router-dom'
 
 const navLinks = [
+    {url:"/dummy",text:"Nested Hoc example"},
     { url: '/', text: 'Home' },
     { url: '/show-the-api-data', text: 'Api data with redux' },
     { url: '/contact', text: 'Contact' },

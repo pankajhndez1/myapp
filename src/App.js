@@ -14,6 +14,7 @@ import LoginPage from './pages/LoginPage';
 import PostPage from './pages/PostPage';
 import PostLayout from './pages/PostLayout';
 import './index.css'
+import DummyComp from './pages/DummyComp';
 
 
 function App() {
@@ -29,7 +30,8 @@ function App() {
     <div>
       <Navbar handleLogin={handleLogin} isLoggedIn={isLoggedIn} />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/dummy" element={<DummyComp data="Abc"/>} />
+        <Route path="/" element={<Home name="pankaj"/>} />
         <Route path="/show-the-api-data" element={<RandomData />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="*" element={<ErrorPage />} />
