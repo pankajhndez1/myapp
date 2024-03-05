@@ -11,6 +11,8 @@ function RandomData() {
     dispatch(myAsyncFunc())
   }, [])
 
+  console.log(stateData,'<===stateData');
+
   return (
     <div className="App">
       <div className='flex justify-center items-center space-y-7'>

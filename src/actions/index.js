@@ -46,7 +46,6 @@ export const updateDataApi = (id) => {
         const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`, {
             method: 'PUT',
             body: JSON.stringify({
-                id: {id},
                 title: 'foo'+`${id}`,
                 body: 'bar'+`${id}`,
                 userId: 1,
