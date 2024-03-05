@@ -17,11 +17,14 @@ const navLinks = [
 
 const Navbar = ({ handleLogin, isLoggedIn }) => {
     return (
-        <div>
-            <button onClick={handleLogin}>{isLoggedIn ? "logout" : "login"}</button>
-            <ul>
+        <div >
+            <div className='text-2xl rounded-md px-3 py-3 font-semibold hover:font-medium  flex justify-between '>
+                <p className='text-lg font-semibold hover:text-gray-500'>Logo</p>
+                <button onClick={handleLogin} className='hover:text-gray-500'>{isLoggedIn ? "logout" : "login"}</button>
+            </div>
+            <ul className="flex space-x-4">
                 {navLinks.map((link, index) => (
-                    <li key={index}>
+                    <li key={index} className='border rounded-lg border-gray-500 flex text-center items-center px-3 py-1'>
                         <NavLink to={link.url} style={({ isActive }) => {
                             return { backgroundColor: isActive ? "red" : '' }
                         }}>

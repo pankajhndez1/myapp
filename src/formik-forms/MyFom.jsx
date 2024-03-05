@@ -9,39 +9,61 @@ const initialValues = {
     confirm_password: ''
 }
 
-const MyFom = () => {
+const InputField = ({ label, name, type = 'text', formik }) => (
+    <div >
+        <div className='flex space-x-4'>
+            <div >
+                <label className='text-lg font-medium' htmlFor={name}>{label}</label>
+            </div>
+            <div >
+                <input
+                    name={name}
+                    id={name}
+                    type={type}
+                    value={formik.values[name]}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                />
+            </div>
+            <div>
+                {formik.errors[name] && formik.touched[name] && <p className='text-red-700'>{formik.errors[name]==="confirm_password"?"Confirm Password":formik.errors[name]}</p>}
+            </div>
+        </div>
+    </div>
+);
+
+const MyForm = () => {
     const formik = useFormik({
         initialValues: initialValues,
         validationSchema: signUpSchema,
-        onSubmit: (values,action) => {
-            // so , here the initialvalues's value will be get here !!
+        onSubmit: (values, action) => {
             console.log(values, '<====values!!!');
             action.resetForm();
         }
-    })
-
-    const { handleChange, touched, handleSubmit, errors, values, handleBlur } = formik;
+    });
 
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
-                <label htmlFor='name'>Name</label>
-                <input name='name' id='name' value={values.name} onChange={handleChange} onBlur={handleBlur} />
-                {errors.name && touched.name?<p>{errors.name}</p>:""}
-                <label htmlFor='email'>Email</label>
-                <input name='email' id='email' value={values.email} onChange={handleChange} onBlur={handleBlur} />
-                {errors.email && touched.email?<p>{errors.email}</p>:""}
-                <label htmlFor='password'>Password</label>
-                <input name='password' type='password' id='password' value={values.password} onChange={handleChange} onBlur={handleBlur} />
-                {errors.password && touched.password?<p>{errors.password}</p>:""}
-                
-                <label htmlFor='confirm_password'>Confirm Password</label>
-                <input name='confirm_password' type='password' id='confirm_password' value={values.confirm_password} onChange={handleChange} onBlur={handleBlur} />
-                {errors.confirm_password && touched.confirm_password?<p>{errors.confirm_password}</p>:""}
-                <button type='submit'>Submit</button>
+        <div >
+            <form onSubmit={formik.handleSubmit}>
+                <div className="flex flex-col space-y-5">
+
+                    <InputField label="Name" name="name" formik={formik} />
+
+                    <InputField label="Email" name="email" formik={formik} />
+
+                    <InputField label="Password" name="password" type="password" formik={formik} />
+
+                    <InputField label="Confirm Password" name="confirm_password" type="password" formik={formik} />
+
+                    <button type='submit'>
+                        <div className='flex justify-start'>
+                            <span className='border px-4 py-3 rounded-lg bg-blue-400 text-black font-medium hover:text-white hover:font-semibold'>Submit</span>
+                        </div>
+                    </button>
+                </div>
             </form>
         </div>
     )
 }
 
-export default MyFom
+export default MyForm
