@@ -11,6 +11,7 @@ const navLinks = [
     { url: `/post/mobile/1/lenovo`, text: 'Post Mobile Page with query params' },
     { url: `/login`, text: 'Login' },
     { url: `/dashboard`, text: 'Dashboard' },
+    { url: `/post-layout`, text: 'Post Layout' },
     { url: `/nested-routing/route1`, text: 'See Nested Routing' },
 ];
 
