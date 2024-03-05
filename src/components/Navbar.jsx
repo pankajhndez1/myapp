@@ -24,9 +24,9 @@ const Navbar = ({ handleLogin, isLoggedIn }) => {
             </div>
             <ul className="flex space-x-4">
                 {navLinks.map((link, index) => (
-                    <li key={index} className='border rounded-lg border-gray-500 flex text-center items-center px-3 py-1'>
+                    <li key={index} className='border rounded-lg bg-gray-400 border-gray-500 flex text-center hover:text-white items-center px-3 py-1'>
                         <NavLink to={link.url} style={({ isActive }) => {
-                            return { backgroundColor: isActive ? "red" : '' }
+                            return { color: isActive ? "blue" : 'white' }
                         }}>
                             {link.text}
                         </NavLink>

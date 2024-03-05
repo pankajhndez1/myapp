@@ -5,7 +5,7 @@ const DynamicPostPage = () => {
     const { category } = useParams()
     return (
         <div>
-            <h2>Post's {category}</h2>
+            <h2  className='flex justify-center items-center text-3xl py-6'>Post's {category}</h2>
         </div>
     )
 }

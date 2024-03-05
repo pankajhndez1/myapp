@@ -7,7 +7,7 @@ const DynamicPostPageWithId = () => {
 
     return (
         <div>
-            <h2>Post's with category {category} and id {id}</h2>
+            <h2  className='flex justify-center items-center text-3xl py-6'>Post's with category {category} and id {id}</h2>
         </div>
     )
 }

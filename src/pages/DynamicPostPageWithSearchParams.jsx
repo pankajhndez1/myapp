@@ -8,11 +8,11 @@ const DynamicPostPageWithSearchParams = () => {
 
     return (
         <div>
-            <h2>Post's with category {category} and id {id}</h2>
-            <h2>{searchParams.get("item")&& <p>The searched params are :</p>}</h2>
-            <h3>{searchParams.get("item")}</h3>
-            <h3>{searchParams.get("price")}</h3>
-            <h1>Note :give query params like (?item=car&price=2323) in order to see the effect !!</h1>
+            <h2 className='flex justify-center items-center text-3xl py-6'>Post's with category {category} and id {id}</h2>
+            <h2 className='flex justify-center items-center text-3xl py-6'>{searchParams.get("item") && <p>The searched params are :</p>}</h2>
+            <h3 className='flex justify-center items-center text-3xl py-6'>{searchParams.get("item")}</h3>
+            <h3 className='flex justify-center items-center text-3xl py-6'>{searchParams.get("price")}</h3>
+            <h1 className='flex justify-center items-center text-3xl py-6'>Note :give query params like (?item=car&price=2323) in order to see the effect !!</h1>
         </div>
     )
 }

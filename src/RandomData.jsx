@@ -13,7 +13,9 @@ function RandomData() {
 
   return (
     <div className="App">
+      <div className='flex justify-center items-center space-y-7'>
       <p className='text-3xl text-gray-600 py-4'>Formik Data Comp</p>
+      </div>
       <MyFom />
       {stateData.map(({ id, title }) => {
         return (
